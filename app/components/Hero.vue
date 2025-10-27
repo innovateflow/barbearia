@@ -16,44 +16,59 @@
             Experimente o que há de melhor em cuidado masculino.
           </p>
           <div class="hero-actions">
-            <button class="btn-primary">
-              Agendar Horário
-            </button>
-            <button class="btn-secondary">
-              Ver Serviços
-            </button>
+            <ButtonPrimary 
+              text="Agendar Horário" 
+              @click="handleAgendarClick"
+            />
+            <ButtonSecondary 
+              text="Ver Serviços" 
+              @click="handleServicosClick"
+            />
           </div>
         </div>
       </div>
 
-      <!-- Lado Direito - Espaço para Imagem -->
+      <!-- Lado Direito - Imagem Hero -->
       <div class="hero-image">
-        <div class="image-placeholder">
-          <div class="placeholder-content">
-            <svg class="placeholder-icon" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-            </svg>
-            <p>Espaço reservado para imagem</p>
-          </div>
-        </div>
+        <img 
+          src="/images/image-hero.png" 
+          alt="Barbearia - Ambiente moderno e profissional" 
+          class="hero-img"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+// Importações explícitas dos componentes
+import ButtonPrimary from './ButtonPrimary.vue'
+import ButtonSecondary from './ButtonSecondary.vue'
+
 // Componente Hero - Primeira seção da página
 // Layout responsivo 50/50 com texto à esquerda e imagem à direita
+
+// Funções para lidar com os clicks dos botões
+const handleAgendarClick = () => {
+  console.log('Botão Agendar Horário clicado')
+  // Aqui você pode adicionar a lógica para redirecionar ou abrir modal
+}
+
+const handleServicosClick = () => {
+  console.log('Botão Ver Serviços clicado')
+  // Aqui você pode adicionar a lógica para redirecionar para seção de serviços
+}
 </script>
 
 <style scoped>
 .hero-section {
-  min-height: 100vh;
+  min-height: 80vh;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #4a4a4a 50%, #8b4513 75%, #d4af37 100%);
   display: flex;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 4rem 0;
 }
 
 .container {
@@ -110,78 +125,33 @@
   flex-wrap: wrap;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #d4af37, #f1c40f);
-  color: #1a1a1a;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: white;
-  padding: 1rem 2rem;
-  border: 2px solid #d4af37;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: #d4af37;
-  color: #1a1a1a;
-  transform: translateY(-2px);
-}
-
 .hero-image {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.image-placeholder {
+.hero-img {
   width: 100%;
   height: 500px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px dashed rgba(212, 175, 55, 0.5);
+  object-fit: cover;
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.placeholder-content {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.placeholder-icon {
-  width: 4rem;
-  height: 4rem;
-  margin-bottom: 1rem;
-  opacity: 0.6;
-}
-
-.placeholder-content p {
-  font-size: 1.1rem;
-  font-weight: 500;
+.hero-img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh;
+    padding: 2rem 0;
+  }
+  
   .container {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -200,12 +170,17 @@
     justify-content: center;
   }
   
-  .image-placeholder {
+  .hero-img {
     height: 300px;
   }
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    min-height: 50vh;
+    padding: 1.5rem 0;
+  }
+  
   .hero-headline {
     font-size: 2rem;
   }
@@ -215,10 +190,8 @@
     align-items: center;
   }
   
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-    max-width: 250px;
+  .hero-img {
+    height: 250px;
   }
 }
 

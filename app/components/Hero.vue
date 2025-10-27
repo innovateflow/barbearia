@@ -18,11 +18,11 @@
           <div class="hero-actions">
             <ButtonPrimary 
               text="Agendar Horário" 
-              @click="handleAgendarClick"
+              href="https://wa.me/5511951665405"
             />
             <ButtonSecondary 
               text="Ver Serviços" 
-              @click="handleServicosClick"
+              @click="scrollToServices"
             />
           </div>
         </div>
@@ -49,15 +49,15 @@ import ButtonSecondary from './ButtonSecondary.vue'
 // Componente Hero - Primeira seção da página
 // Layout responsivo 50/50 com texto à esquerda e imagem à direita
 
-// Funções para lidar com os clicks dos botões
-const handleAgendarClick = () => {
-  console.log('Botão Agendar Horário clicado')
-  // Aqui você pode adicionar a lógica para redirecionar ou abrir modal
-}
-
-const handleServicosClick = () => {
-  console.log('Botão Ver Serviços clicado')
-  // Aqui você pode adicionar a lógica para redirecionar para seção de serviços
+// Função para rolar até a seção de serviços
+const scrollToServices = () => {
+  const servicesSection = document.querySelector('.servicos-section')
+  if (servicesSection) {
+    servicesSection.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
 }
 </script>
 
@@ -125,6 +125,13 @@ const handleServicosClick = () => {
   flex-wrap: wrap;
 }
 
+.hero-actions :deep(.btn-primary),
+.hero-actions :deep(.btn-secondary) {
+  flex: 0 0 auto;
+  max-width: 200px;
+  width: auto;
+}
+
 .hero-image {
   display: flex;
   justify-content: center;
@@ -188,6 +195,12 @@ const handleServicosClick = () => {
   .hero-actions {
     flex-direction: column;
     align-items: center;
+  }
+  
+  .hero-actions :deep(.btn-primary),
+  .hero-actions :deep(.btn-secondary) {
+    width: 100%;
+    max-width: 280px;
   }
   
   .hero-img {

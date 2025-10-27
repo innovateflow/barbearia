@@ -17,7 +17,7 @@
         <div class="servico-preco">{{ preco }}</div>
         <ButtonPrimary 
           text="Agendar" 
-          @click="handleAgendarClick"
+          href="https://wa.me/5511951665405"
         />
       </div>
     </div>
@@ -51,17 +51,7 @@ const props = defineProps({
 // Computed para gerar o caminho da imagem
 const imageSrc = computed(() => `/images/${props.imagem}`)
 
-// Emits
-const emit = defineEmits(['agendar'])
-
-// Função para lidar com o click do botão agendar
-const handleAgendarClick = () => {
-  emit('agendar', {
-    titulo: props.titulo,
-    preco: props.preco,
-    imagem: props.imagem
-  })
-}
+// Botão agora redireciona diretamente para WhatsApp
 </script>
 
 <style scoped>

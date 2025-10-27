@@ -1,5 +1,19 @@
 <template>
-  <button class="btn-primary" :type="type" @click="handleClick">
+  <a 
+    v-if="href" 
+    :href="href" 
+    :target="target"
+    class="btn-primary btn-link"
+    role="button"
+  >
+    <slot>{{ text }}</slot>
+  </a>
+  <button 
+    v-else
+    class="btn-primary" 
+    :type="type" 
+    @click="handleClick"
+  >
     <slot>{{ text }}</slot>
   </button>
 </template>
@@ -14,6 +28,14 @@ const props = defineProps({
   type: {
     type: String,
     default: 'button'
+  },
+  href: {
+    type: String,
+    default: null
+  },
+  target: {
+    type: String,
+    default: '_blank'
   }
 })
 
@@ -39,6 +61,15 @@ const handleClick = (event) => {
   transition: all 0.3s ease;
   width: 100%;
   max-width: 250px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-primary.btn-link {
+  display: inline-flex;
 }
 
 .btn-primary:hover {

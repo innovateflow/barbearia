@@ -42,7 +42,7 @@
         <div class="sobre-actions">
           <ButtonPrimary 
             text="Conheça Nossa Equipe" 
-            @click="handleEquipeClick"
+            href="https://wa.me/5511951665405"
           />
         </div>
       </div>
@@ -66,12 +66,7 @@ import ButtonPrimary from './ButtonPrimary.vue'
 
 // Componente Sobre Nós - Segunda seção da página
 // Layout responsivo 50/50 com conteúdo à esquerda e imagem à direita
-
-// Função para lidar com o click do botão
-const handleEquipeClick = () => {
-  console.log('Botão Conheça Nossa Equipe clicado')
-  // Aqui você pode adicionar a lógica para redirecionar para página da equipe
-}
+// Botão agora redireciona para WhatsApp
 </script>
 
 <style scoped>

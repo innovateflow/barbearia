@@ -18,7 +18,6 @@
           :descricao="servico.descricao"
           :preco="servico.preco"
           :imagem="servico.imagem"
-          @agendar="handleAgendar"
         />
       </div>
 
@@ -29,7 +28,7 @@
         </p>
         <ButtonSecondary 
           text="Ver Todos os Serviços" 
-          @click="handleVerTodos"
+          href="https://wa.me/5511951665405"
         />
       </div>
     </div>
@@ -87,17 +86,7 @@ const servicos = ref([
   }
 ])
 
-// Função para lidar com o agendamento de um serviço específico
-const handleAgendar = (servicoData) => {
-  console.log('Agendar serviço:', servicoData)
-  // Aqui você pode adicionar a lógica para abrir modal de agendamento ou redirecionar
-}
-
-// Função para ver todos os serviços
-const handleVerTodos = () => {
-  console.log('Ver todos os serviços')
-  // Aqui você pode adicionar a lógica para ir para página de serviços completa
-}
+// Os botões agora redirecionam diretamente para WhatsApp
 </script>
 
 <style scoped>
